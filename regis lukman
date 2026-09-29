@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pendaftaran Peserta | 2 CAHAYA DIGITAL SCORING</title>
+    
+    <!-- Tailwind CSS & Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 50%), 
+                              url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Custom Scrollbar for smaller laptops */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        .input-loting { 
+            width: 100%; 
+            padding: 14px 16px; 
+            border: 1.5px solid #e2e8f0; 
+            border-radius: 12px; 
+            font-weight: 700; 
+            outline: none; 
+            background: #f8fafc;
+            color: #1e293b;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .input-loting:focus { 
+            border-color: #0ea5e9; 
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15); 
+            transform: translateY(-1px);
+        }
+
+        .label-sekre { 
+            font-weight: 800; 
+            color: #64748b; 
+            text-transform: uppercase; 
+            margin-bottom: 6px; 
+            display: block; 
+            letter-spacing: 0.05em;
+        }
+
+        /* Animasi Kiri Laptop */
+        .bg-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Container Utama: Akan berubah jadi row di laptop (md:flex-row) -->
+    <div class="glass-card w-full max-w-5xl rounded-[2rem] md:rounded-[3rem] relative overflow-hidden flex flex-col md:flex-row max-h-[95vh]">
+        
+        <!-- PANEL KIRI (Branding) - Tersembunyi sebagian di HP, Dominan di Laptop -->
+        <div class="md:w-5/12 bg-slate-900 text-white p-8 md:p-12 flex flex-col justify-center items-center text-center relative overflow-hidden bg-pattern">
+            <!-- Dekorasi Gradient -->
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-sky-400 to-blue-600"></div>
+            <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-sky-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute -top-24 -left-24 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+            <div class="relative z-10 w-full">
+                <div class="w-16 h-16 md:w-24 md:h-24 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-white/20 shadow-xl">
+                    <i class="fas fa-trophy text-3xl md:text-5xl text-sky-400"></i>
+                </div>
+                
+                <p class="text-sky-400 font-extrabold text-[10px] md:text-xs uppercase tracking-[0.3em] mb-2">Pendaftaran Online</p>
+                <h1 class="text-white font-black text-2xl md:text-4xl uppercase tracking-tighter mb-4 leading-tight">
+                    <span style="color: #CD7F32;">2 CAHAYA</span><br>TOURNAMENT
+                </h1>
+                
+                <div class="hidden md:block w-12 h-1.5 bg-gradient-to-r from-sky-400 to-blue-600 mx-auto rounded-full mb-6"></div>
+                
+                <p class="text-slate-300 text-xs md:text-sm font-semibold leading-relaxed mb-6 hidden md:block">
+                    Pastikan data yang Anda masukkan sudah benar. Data akan otomatis masuk ke sistem antrian Loting Digital Scoring.
+                </p>
+
+                <p class="text-slate-800 text-[10px] md:text-xs font-black uppercase tracking-widest bg-sky-400 py-2 px-4 rounded-full inline-block shadow-lg">
+                    <i class="fas fa-bolt mr-1"></i> Sistem Terintegrasi
+                </p>
+            </div>
+        </div>
+        
+        <!-- PANEL KANAN (Form Input) - Bisa di-scroll jika layar kecil -->
+        <div class="md:w-7/12 p-6 sm:p-8 md:p-12 overflow-y-auto custom-scroll bg-white">
+            
+            <div class="md:hidden text-center mb-6">
+                <h2 class="text-slate-800 font-black text-xl uppercase italic">Formulir Peserta</h2>
+                <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-1">Lengkapi data di bawah ini</p>
+            </div>
+
+            <form id="form-pendaftaran" class="space-y-5 md:space-y-6">
+                <!-- Row 1: Nama -->
+                <div>
+                    <label class="label-sekre text-[10px] md:text-xs">Nama Lengkap Peserta *</label>
+                    <input type="text" id="reg-nama" class="input-loting text-[11px] md:text-sm" placeholder="NAMA PESERTA" required>
+                </div>
+
+                <!-- Row 2: Kontingen -->
+                <div>
+                    <label class="label-sekre text-[10px] md:text-xs">Nama Perguruan / Kontingen *</label>
+                    <input type="text" id="reg-kont" class="input-loting text-[11px] md:text-sm" placeholder="NAMA KONTINGEN" required>
+                </div>
+
+                <!-- Row 3: Grid (Kategori, Kelas, Gender) -->
+                <!-- Di HP: Kategori 1 baris, Kelas & Gender sebelahan. Di Laptop: Tiga-tiganya sebelahan -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="md:col-span-1">
+                        <label class="label-sekre text-[10px] md:text-xs">Kategori Usia *</label>
+                        <select id="reg-cat" class="input-loting text-[11px] md:text-xs" required>
+                            <option value="" disabled selected>-- PILIH --</option>
+                            <option value="PRA USIA DINI">PRA USIA DINI</option>
+                            <option value="USIA DINI">USIA DINI</option>
+                            <option value="PRA REMAJA">PRA REMAJA</option>
+                            <option value="REMAJA">REMAJA</option>
+                            <option value="DEWASA">DEWASA</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-2 gap-4 md:col-span-2">
+                        <div>
+                            <label class="label-sekre text-[10px] md:text-xs">Kelas *</label>
+                            <select id="reg-kelas" class="input-loting text-[11px] md:text-xs" required>
+                                <option value="" disabled selected>KELAS</option>
+                                <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+                                <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+                                <option value="G">G</option><option value="H">H</option><option value="I">I</option>
+                                <option value="J">J</option><option value="K">K</option><option value="L">L</option>
+                                <option value="BEBAS">BEBAS</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="label-sekre text-[10px] md:text-xs">Gender *</label>
+                            <select id="reg-gender" class="input-loting text-[11px] md:text-xs" required>
+                                <option value="" disabled selected>GENDER</option>
+                                <option value="PUTRA">PUTRA</option>
+                                <option value="PUTRI">PUTRI</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tombol Submit -->
+                <div class="pt-6">
+                    <button type="submit" id="btn-simpan" class="w-full bg-slate-900 hover:bg-sky-600 text-white font-black py-4 md:py-5 rounded-2xl shadow-xl hover:shadow-sky-500/30 transition-all transform active:scale-[0.98] uppercase tracking-widest text-[11px] md:text-sm flex justify-center items-center gap-3 border border-slate-700 hover:border-sky-500">
+                        <i class="fas fa-paper-plane text-lg"></i> <span>Kirim Pendaftaran</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT FIREBASE (TETAP SAMA) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+  apiKey: "AIzaSyBTPCFsJz1cY9L44H38RS4Ag8YusBNKXRA",
+  authDomain: "lukman-nur.firebaseapp.com",
+  databaseURL: "https://lukman-nur-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "lukman-nur",
+  storageBucket: "lukman-nur.firebasestorage.app",
+  messagingSenderId: "966190722319",
+  appId: "1:966190722319:web:98e20a170b5cf4da73a27a"
+};
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        const participantsRef = ref(database, 'pencak_scoring_state/participants');
+
+        document.getElementById('form-pendaftaran').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btnSimpan = document.getElementById('btn-simpan');
+            btnSimpan.disabled = true;
+            btnSimpan.innerHTML = '<i class="fas fa-spinner fa-spin text-lg"></i> <span>MEMPROSES...</span>';
+
+            const nama = document.getElementById('reg-nama').value.toUpperCase();
+            const kontingen = document.getElementById('reg-kont').value.toUpperCase();
+            const usia = document.getElementById('reg-cat').value;
+            const kelas = document.getElementById('reg-kelas').value;
+            const gender = document.getElementById('reg-gender').value;
+
+            try {
+                const snapshot = await get(participantsRef);
+                let currentParticipants = [];
+                
+                if (snapshot.exists()) {
+                    currentParticipants = snapshot.val();
+                    currentParticipants = currentParticipants.filter(p => p !== null && p !== undefined);
+                }
+
+                const newParticipant = {
+                    id: Date.now(),
+                    nama: nama,
+                    kont: kontingen,
+                    cat: usia,
+                    kelas: kelas,
+                    gender: gender,
+                    photo: "",
+                    round: 3,
+                    timer: 120
+                };
+
+                currentParticipants.push(newParticipant);
+                await set(participantsRef, currentParticipants);
+
+                alert('✅ Pendaftaran Berhasil!\nNama peserta telah masuk ke Menu Loting di aplikasi Digital Scoring.');
+                document.getElementById('form-pendaftaran').reset();
+
+            } catch (error) {
+                alert('❌ Terjadi kesalahan koneksi: ' + error.message);
+            } finally {
+                btnSimpan.disabled = false;
+                btnSimpan.innerHTML = '<i class="fas fa-paper-plane text-lg"></i> <span>Kirim Pendaftaran</span>';
+            }
+        });
+    </script>
+</body>
+</html>
